@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>NAVAJA — Barbería clásica · EST. 1987 · Guadalajara</title>
+<meta name="description" content="NAVAJA, barbería clásica desde 1987. Corte clásico, afeitado a navaja libre con toalla caliente y patilla a pulso. Reserve su silla.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23151210'/%3E%3Crect x='13' y='4' width='6' height='24' rx='3' fill='%23F0E6D2'/%3E%3Crect x='13' y='8' width='6' height='4' fill='%239E2B25'/%3E%3Crect x='13' y='16' width='6' height='4' fill='%2316283C'/%3E%3Crect x='13' y='24' width='6' height='4' fill='%239E2B25'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://images.pexels.com">
+<link rel="preconnect" href="https://videos.pexels.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rye&family=League+Gothic&family=Pinyon+Script&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --espresso:#151210;
+    --navy:#16283C;
+    --crema:#F0E6D2;
+    --oxblood:#9E2B25;
+    --laton:#B08D57;
+    --rye:"Rye",serif;
+    --gothic:"League Gothic",sans-serif;
+    --script:"Pinyon Script",cursive;
+    --type:"Special Elite",monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{background:var(--espresso);overflow-x:clip;scrollbar-width:none}
+  html::-webkit-scrollbar{display:none}
+  body{
+    background:var(--espresso);color:var(--crema);
+    font-family:var(--gothic);font-size:1.15rem;line-height:1.6;
+    letter-spacing:.03em;overflow-x:clip;
+  }
+  ::selection{background:var(--oxblood);color:var(--crema)}
+  img,video{max-width:100%;display:block}
+  section{position:relative}
+  .kicker{
+    font-family:var(--gothic);font-size:clamp(.8rem,1.2vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;color:var(--laton);
+  }
+  .script{font-family:var(--script);color:var(--laton);letter-spacing:0}
+  .btn{
+    display:inline-block;background:var(--oxblood);color:var(--crema);
+    text-decoration:none;font-family:var(--gothic);
+    font-size:clamp(1.05rem,1.5vw,1.3rem);letter-spacing:.28em;text-transform:uppercase;
+    padding:17px 46px;border:1px solid var(--laton);
+    box-shadow:0 0 0 5px var(--espresso), 0 0 0 6px var(--laton);
+    min-height:44px;
+  }
+  @media (hover:hover) and (pointer:fine){
+    .btn:hover{background:var(--laton);color:var(--espresso)}
+  }
+  .btn:focus-visible{outline:2px solid var(--crema);outline-offset:8px}
+
+  /* ============ POSTE DE BARBERO (CSS puro, loop de un periodo exacto) ============ */
+  .poste{
+    width:40px;height:190px;border-radius:20px;
+    border:3px solid var(--laton);
+    background:repeating-linear-gradient(-45deg,
+      #9E2B25 0 14px, #F0E6D2 14px 28px, #16283C 28px 42px, #F0E6D2 42px 56px);
+    background-size:100% 79.2px;
+    animation:pole-spin 1.5s linear infinite;
+    box-shadow:inset 6px 0 8px rgba(255,255,255,.32), inset -8px 0 10px rgba(0,0,0,.5);
+  }
+  @keyframes pole-spin{to{background-position:0 79.2px}}
+  .poste::before,.poste::after{content:"";display:block}
+  #poste-fijo{
+    position:fixed;left:26px;top:50%;transform:translateY(-50%);z-index:60;
+    display:none;
+  }
+  @media (min-width:1100px){ #poste-fijo{display:block} }
+
+  /* ============ HERO ============ */
+  #hero{
+    min-height:100vh;min-height:100svh;overflow:hidden;
+    display:grid;place-items:center;text-align:center;
+    padding:12vh 6vw;
+  }
+  #hero .fondo{position:absolute;inset:0}
+  #hero .fondo img{
+    width:100%;height:100%;object-fit:cover;object-position:center 30%;
+    filter:saturate(.82) brightness(.62);
+  }
+  #hero .fondo::after{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(ellipse at 50% 46%,rgba(21,18,16,.18),rgba(21,18,16,.94) 82%);
+  }
+  #hero-inner{position:relative;z-index:5;max-width:900px}
+  #escudo{width:clamp(88px,10vw,128px);margin:0 auto 3vh;display:block}
+  #hero h1{
+    font-family:var(--rye);font-weight:400;
+    font-size:clamp(3.6rem,12vw,9.5rem);line-height:1;color:var(--crema);
+    text-shadow:0 4px 30px rgba(0,0,0,.7);
+  }
+  #hero .sub{
+    margin-top:1.5vh;font-size:clamp(1rem,1.6vw,1.35rem);
+    letter-spacing:.5em;text-indent:.5em;text-transform:uppercase;
+    color:var(--laton);
+  }
+  #hero .lema{
+    margin:3.5vh auto 0;font-family:var(--script);
+    font-size:clamp(1.5rem,2.6vw,2.2rem);color:rgba(240,230,210,.85);
+    max-width:30ch;line-height:1.4;
+  }
+  #hero .btn{margin-top:4.5vh}
+
+  /* ============ MARQUEE HERITAGE (lento, arquetipo Cartier) ============ */
+  .heritage{
+    overflow:hidden;white-space:nowrap;
+    border-top:1px solid var(--laton);border-bottom:1px solid var(--laton);
+    padding:16px 0;background:var(--espresso);position:relative;z-index:5;
+  }
+  .heritage .track{
+    display:inline-flex;gap:3.2rem;width:max-content;padding-right:3.2rem;
+    animation:heritage-move 46s linear infinite;
+    font-family:var(--gothic);font-size:clamp(1rem,1.5vw,1.3rem);
+    letter-spacing:.34em;text-transform:uppercase;color:rgba(240,230,210,.72);
+    align-items:center;
+  }
+  .heritage i{font-style:normal;color:var(--laton)}
+  @keyframes heritage-move{to{transform:translateX(-50%)}}
+
+  /* ============ EL RITUAL (Observer slides) ============ */
+  #ritual{height:100vh;height:100svh;overflow:hidden;background:#0D0B09}
+  .slide{
+    position:absolute;inset:0;display:grid;place-items:center;text-align:center;
+    opacity:0;visibility:hidden;
+  }
+  .slide.activa{opacity:1;visibility:visible}
+  .slide .fondo{position:absolute;inset:0}
+  .slide .fondo img,.slide .fondo video{
+    width:100%;height:100%;object-fit:cover;
+    filter:saturate(.8) brightness(.5);
+  }
+  .slide .fondo::after{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(ellipse at 50% 55%,rgba(13,11,9,.2),rgba(13,11,9,.92) 84%);
+  }
+  .slide-inner{position:relative;z-index:5;max-width:760px;padding:0 8vw}
+  .slide .paso{
+    font-family:var(--rye);font-size:clamp(1.1rem,1.8vw,1.5rem);color:var(--laton);
+  }
+  .slide h3{
+    font-family:var(--gothic);font-weight:400;text-transform:uppercase;
+    font-size:clamp(2.6rem,7vw,5.6rem);letter-spacing:.1em;line-height:1;
+    margin:2vh 0;color:var(--crema);
+  }
+  .slide p{font-size:clamp(1.05rem,1.6vw,1.3rem);color:rgba(240,230,210,.85)}
+  #icono-ritual{
+    position:absolute;bottom:9vh;left:50%;transform:translateX(-50%);z-index:6;
+    width:clamp(54px,6vw,76px);
+  }
+  #icono-ritual svg{width:100%;height:auto;display:block}
+  #icono-path{fill:var(--laton)}
+  #ritual-dots{
+    position:absolute;right:max(28px, env(safe-area-inset-right,0px));top:50%;
+    transform:translateY(-50%);z-index:6;display:grid;gap:14px;
+  }
+  #ritual-dots button{
+    width:12px;height:12px;border-radius:50%;border:1px solid var(--laton);
+    background:transparent;cursor:pointer;padding:0;
+  }
+  #ritual-dots button.on{background:var(--laton)}
+  #ritual-hint{
+    position:absolute;bottom:3vh;left:0;width:100%;text-align:center;z-index:6;
+    font-family:var(--type);font-size:.72rem;letter-spacing:.24em;
+    color:rgba(240,230,210,.45);text-transform:uppercase;
+  }
+  /* móvil / reduced: pasos apilados normales */
+  @media (max-width:799px), (max-height:500px){
+    #ritual{height:auto}
+    .slide{position:relative;opacity:1;visibility:visible;min-height:86svh}
+    #icono-ritual,#ritual-dots,#ritual-hint{display:none}
+  }
+
+  /* ============ MENÚ DEL PARLOR ============ */
+  #menu{padding:14vh 6vw;display:grid;place-items:center}
+  #carta{
+    background:var(--crema);color:#241E18;width:min(680px,94vw);
+    padding:clamp(30px,5vw,60px);position:relative;
+    border:1px solid #241E18;
+    box-shadow:0 0 0 6px var(--crema), 0 0 0 7px #241E18, 0 30px 70px rgba(0,0,0,.5);
+  }
+  #carta .kicker{color:var(--oxblood);text-align:center;display:block}
+  #carta h2{
+    font-family:var(--rye);font-weight:400;text-align:center;
+    font-size:clamp(1.9rem,4vw,3rem);margin:12px 0 1vh;
+  }
+  #carta .script{
+    display:block;text-align:center;font-size:clamp(1.4rem,2.2vw,1.9rem);
+    color:var(--oxblood);margin-bottom:4vh;
+  }
+  #carta .fila{
+    display:flex;align-items:baseline;gap:12px;
+    font-family:var(--type);font-size:clamp(.92rem,1.4vw,1.1rem);
+    margin:18px 0;
+  }
+  #carta .fila .servicio{white-space:nowrap}
+  #carta .fila .puntos{flex:1;border-bottom:2px dotted rgba(36,30,24,.55);transform:translateY(-4px)}
+  #carta .fila .precio{white-space:nowrap}
+  #carta .fila .dur{display:block;font-size:.72rem;color:rgba(36,30,24,.6);text-align:right}
+  #carta .nota-pie{
+    margin-top:4vh;text-align:center;font-family:var(--type);
+    font-size:.78rem;color:rgba(36,30,24,.65);
+  }
+
+  /* ============ EL ARCHIVO (image trail) ============ */
+  #archivo{
+    min-height:74vh;min-height:74svh;overflow:hidden;
+    display:grid;place-items:center;text-align:center;
+    background:#0D0B09;border-top:1px solid rgba(176,141,87,.3);
+    border-bottom:1px solid rgba(176,141,87,.3);
+    cursor:crosshair;
+  }
+  #archivo .centro{position:relative;z-index:2;pointer-events:none;padding:0 8vw}
+  #archivo h2{
+    font-family:var(--gothic);font-weight:400;text-transform:uppercase;
+    font-size:clamp(2.2rem,6vw,4.6rem);letter-spacing:.12em;color:var(--crema);
+  }
+  #archivo .pista{
+    margin-top:1.5vh;font-family:var(--type);font-size:.78rem;
+    letter-spacing:.22em;text-transform:uppercase;color:rgba(240,230,210,.5);
+  }
+  .estela{
+    position:absolute;width:clamp(110px,12vw,170px);aspect-ratio:3/4;
+    object-fit:cover;pointer-events:none;z-index:1;
+    border:4px solid var(--crema);box-shadow:0 14px 34px rgba(0,0,0,.55);
+  }
+  #archivo-grid{display:none}
+  @media (max-width:799px){
+    #archivo{cursor:default}
+    #archivo .pista{display:none}
+    #archivo-grid{
+      display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;
+      margin-top:4vh;pointer-events:none;
+    }
+    #archivo-grid img{border:3px solid var(--crema);aspect-ratio:3/4;object-fit:cover}
+  }
+
+  /* ============ LAS SILLAS (roster) ============ */
+  #sillas{padding:14vh 6vw}
+  #sillas header{text-align:center;margin-bottom:7vh}
+  #sillas h2{
+    font-family:var(--gothic);font-weight:400;text-transform:uppercase;
+    font-size:clamp(2.4rem,6.5vw,5rem);letter-spacing:.1em;margin-top:10px;
+  }
+  #sillas-grid{
+    display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:clamp(18px,3vw,44px);max-width:1150px;margin:0 auto;
+  }
+  @media (max-width:799px){ #sillas-grid{grid-template-columns:1fr;max-width:420px} }
+  .barbero{text-align:center}
+  .barbero .ph{
+    aspect-ratio:3/4;overflow:hidden;
+    border:1px solid var(--laton);
+    box-shadow:0 0 0 8px var(--espresso), 0 0 0 9px rgba(176,141,87,.4);
+  }
+  .barbero .ph img{width:100%;height:100%;object-fit:cover;filter:saturate(.85) brightness(.9)}
+  .barbero .num{
+    font-family:var(--rye);font-size:clamp(1.4rem,2vw,1.8rem);color:var(--laton);
+    margin-top:22px;display:block;
+  }
+  .barbero h3{
+    font-family:var(--gothic);font-weight:400;text-transform:uppercase;
+    font-size:clamp(1.5rem,2.2vw,2rem);letter-spacing:.14em;margin-top:6px;
+  }
+  .barbero .esp{
+    font-family:var(--type);font-size:.78rem;letter-spacing:.14em;
+    color:rgba(240,230,210,.65);margin-top:8px;text-transform:uppercase;
+  }
+
+  /* ============ EL POSTE (historia) ============ */
+  #poste-historia{background:var(--navy);padding:14vh 6vw}
+  #poste-grid{
+    display:grid;grid-template-columns:auto 1fr;gap:clamp(30px,6vw,90px);
+    max-width:1100px;margin:0 auto;align-items:center;
+  }
+  @media (max-width:799px){ #poste-grid{grid-template-columns:1fr;justify-items:center;text-align:center} }
+  #poste-grande{width:64px;height:320px;border-radius:32px;background-size:100% 79.2px}
+  #poste-historia h2{
+    font-family:var(--gothic);font-weight:400;text-transform:uppercase;
+    font-size:clamp(2.2rem,5.5vw,4.2rem);letter-spacing:.1em;margin:10px 0 4vh;
+  }
+  .significados{display:grid;gap:22px}
+  .significado{
+    border-left:2px solid var(--laton);padding-left:22px;text-align:left;
+  }
+  @media (max-width:799px){ .significado{border-left:none;border-top:2px solid var(--laton);padding:16px 0 0;text-align:center} }
+  .significado b{
+    font-family:var(--gothic);text-transform:uppercase;letter-spacing:.2em;
+    font-weight:400;font-size:1.15rem;
+  }
+  .significado.rojo b{color:#C65A4F}
+  .significado.blanco b{color:var(--crema)}
+  .significado.azul b{color:#7FA8D9}
+  .significado p{font-size:1rem;color:rgba(240,230,210,.75);margin-top:6px}
+
+  /* ============ CIERRE ============ */
+  #cierre{padding:14vh 6vw calc(12vh + env(safe-area-inset-bottom,0px));display:grid;place-items:center;text-align:center}
+  #certificado{
+    border:1px solid var(--laton);padding:clamp(34px,5vw,64px);
+    box-shadow:inset 0 0 0 5px var(--espresso), inset 0 0 0 6px rgba(176,141,87,.5);
+    max-width:720px;
+  }
+  #certificado .script{font-size:clamp(1.8rem,3vw,2.6rem);display:block}
+  #certificado h2{
+    font-family:var(--gothic);font-weight:400;text-transform:uppercase;
+    font-size:clamp(2.2rem,5.5vw,4.2rem);letter-spacing:.12em;margin:1.5vh 0 3vh;
+  }
+  #certificado .datos{
+    font-family:var(--type);font-size:clamp(.78rem,1.1vw,.92rem);
+    letter-spacing:.18em;text-transform:uppercase;color:rgba(240,230,210,.7);
+    line-height:2.2;margin-bottom:4vh;
+  }
+  #pie{
+    text-align:center;padding:0 6vw 6vh;
+    font-family:var(--type);font-size:.66rem;letter-spacing:.16em;
+    text-transform:uppercase;color:rgba(240,230,210,.35);
+  }
+
+  @media (max-height:500px){
+    #hero{min-height:auto;padding:10vh 6vw}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important}
+  }
+</style>
+</head>
+<body>
+
+<div id="poste-fijo" aria-hidden="true"><div class="poste"></div></div>
+
+<!-- ============ HERO ============ -->
+<section id="hero" aria-label="Navaja, barbería clásica">
+  <div class="fondo" aria-hidden="true">
+    <img src="https://images.pexels.com/photos/2014808/pexels-photo-2014808.jpeg?auto=compress&cs=tinysrgb&w=1600"
+         alt="" fetchpriority="high" referrerpolicy="no-referrer">
+  </div>
+  <div id="hero-inner">
+    <svg id="escudo" viewBox="0 0 120 120" aria-hidden="true">
+      <circle cx="60" cy="60" r="56" fill="none" stroke="#B08D57" stroke-width="1.6"/>
+      <circle cx="60" cy="60" r="47" fill="none" stroke="#B08D57" stroke-width="1"/>
+      <path d="M36 78 L78 40 L84 44 L44 84 Z" fill="#F0E6D2" opacity=".9"/>
+      <path d="M84 78 L42 40 L36 44 L76 84 Z" fill="#B08D57" opacity=".9"/>
+      <circle cx="60" cy="26" r="3" fill="#9E2B25"/>
+      <circle cx="60" cy="94" r="3" fill="#9E2B25"/>
+    </svg>
+    <h1>NAVAJA</h1>
+    <p class="sub">BARBERÍA CLÁSICA · EST. 1987</p>
+    <p class="lema">«Siéntese. La silla tiene más años que la prisa.»</p>
+    <a class="btn" href="#cierre">RESERVAR SILLA</a>
+  </div>
+</section>
+
+<!-- marquee heritage lento -->
+<div class="heritage" aria-hidden="true">
+  <div class="track">
+    <span>EST. 1987</span><i>✂</i><span>GUADALAJARA</span><i>✂</i><span>NAVAJA LIBRE</span><i>✂</i><span>TOALLA CALIENTE</span><i>✂</i><span>PATILLA A PULSO</span><i>✂</i>
+    <span>EST. 1987</span><i>✂</i><span>GUADALAJARA</span><i>✂</i><span>NAVAJA LIBRE</span><i>✂</i><span>TOALLA CALIENTE</span><i>✂</i><span>PATILLA A PULSO</span><i>✂</i>
+  </div>
+</div>
+
+<!-- ============ EL RITUAL (Observer slides) ============ -->
+<section id="ritual" aria-label="El ritual, paso a paso">
+  <div class="slide activa" data-slide="0">
+    <div class="fondo" aria-hidden="true"><img src="https://images.pexels.com/photos/7697492/pexels-photo-7697492.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="" loading="lazy" referrerpolicy="no-referrer"></div>
+    <div class="slide-inner">
+      <span class="paso">I</span>
+      <h3>La toalla caliente</h3>
+      <p>Abre el poro y baja la guardia. Cinco minutos de vapor antes de que la hoja toque piel.</p>
+    </div>
+  </div>
+  <div class="slide" data-slide="1">
+    <div class="fondo" aria-hidden="true">
+      <video muted loop playsinline preload="metadata"
+        src="https://videos.pexels.com/video-files/5450159/5450159-hd_1280_720_30fps.mp4"></video>
+    </div>
+    <div class="slide-inner">
+      <span class="paso">II</span>
+      <h3>La navaja libre</h3>
+      <p>Un solo trazo, un solo oficio. La navaja no perdona y por eso respeta.</p>
+    </div>
+  </div>
+  <div class="slide" data-slide="2">
+    <div class="fondo" aria-hidden="true"><img src="https://images.pexels.com/photos/12304510/pexels-photo-12304510.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="" loading="lazy" referrerpolicy="no-referrer"></div>
+    <div class="slide-inner">
+      <span class="paso">III</span>
+      <h3>La patilla a pulso</h3>
+      <p>Aquí la patilla se dibuja a mano alzada, no se adivina con máquina.</p>
+    </div>
+  </div>
+  <div class="slide" data-slide="3">
+    <div class="fondo" aria-hidden="true"><img src="https://images.pexels.com/photos/1836983/pexels-photo-1836983.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="" loading="lazy" referrerpolicy="no-referrer"></div>
+    <div class="slide-inner">
+      <span class="paso">IV</span>
+      <h3>El espejo de frente</h3>
+      <p>Cada servicio termina igual que empezó: con el espejo de frente y la frente en alto.</p>
+    </div>
+  </div>
+
+  <div id="icono-ritual" aria-hidden="true">
+    <svg viewBox="0 0 100 100">
+      <path id="icono-path" d="M20 40 L80 40 A10 10 0 0 1 80 60 L20 60 A10 10 0 0 1 20 40 Z"/>
+      <path id="forma-navaja" style="display:none" d="M14 64 L52 38 L82 36 L86 44 L58 52 L22 72 Z"/>
+      <path id="forma-peine" style="display:none" d="M24 34 L76 34 L76 46 L70 46 L70 62 L64 62 L64 46 L58 46 L58 62 L52 62 L52 46 L46 46 L46 62 L40 62 L40 46 L34 46 L34 62 L28 62 L28 46 L24 46 Z"/>
+      <path id="forma-espejo" style="display:none" d="M50 18 A19 19 0 1 1 49.9 18 Z M45 56 L55 56 L55 82 L45 82 Z"/>
+      <path id="forma-toalla" style="display:none" d="M20 40 L80 40 A10 10 0 0 1 80 60 L20 60 A10 10 0 0 1 20 40 Z"/>
+    </svg>
+  </div>
+  <div id="ritual-dots" role="tablist" aria-label="Pasos del ritual"></div>
+  <p id="ritual-hint">UN GESTO · UN PASO</p>
+</section>
+
+<!-- ============ MENÚ DEL PARLOR ============ -->
+<section id="menu" aria-label="Menú de servicios">
+  <div id="carta">
+    <span class="kicker">TARIFAS DE LA CASA</span>
+    <h2>Menú del Parlor</h2>
+    <span class="script">todo termina en toalla caliente</span>
+    <div class="fila"><span class="servicio">CORTE CLÁSICO</span><span class="puntos"></span><span class="precio">$180<span class="dur">45 MIN</span></span></div>
+    <div class="fila"><span class="servicio">AFEITADO A NAVAJA</span><span class="puntos"></span><span class="precio">$160<span class="dur">40 MIN</span></span></div>
+    <div class="fila"><span class="servicio">BARBA Y PATILLA</span><span class="puntos"></span><span class="precio">$140<span class="dur">30 MIN</span></span></div>
+    <div class="fila"><span class="servicio">RITUAL COMPLETO</span><span class="puntos"></span><span class="precio">$320<span class="dur">90 MIN</span></span></div>
+    <p class="nota-pie">SE ATIENDE CON CITA · EL CAFÉ CORRE POR LA CASA</p>
+  </div>
+</section>
+
+<!-- ============ EL ARCHIVO (image trail) ============ -->
+<section id="archivo" aria-label="El archivo de la casa">
+  <div class="centro">
+    <span class="kicker">DESDE 1987</span>
+    <h2>El archivo de la casa</h2>
+    <p class="pista">RECORRA CON EL CURSOR</p>
+    <div id="archivo-grid" aria-hidden="true">
+      <img src="https://images.pexels.com/photos/9992819/pexels-photo-9992819.jpeg?auto=compress&cs=tinysrgb&w=500" alt="" loading="lazy" referrerpolicy="no-referrer">
+      <img src="https://images.pexels.com/photos/2318055/pexels-photo-2318055.jpeg?auto=compress&cs=tinysrgb&w=500" alt="" loading="lazy" referrerpolicy="no-referrer">
+      <img src="https://images.pexels.com/photos/4449799/pexels-photo-4449799.jpeg?auto=compress&cs=tinysrgb&w=500" alt="" loading="lazy" referrerpolicy="no-referrer">
+      <img src="https://images.pexels.com/photos/4625615/pexels-photo-4625615.jpeg?auto=compress&cs=tinysrgb&w=500" alt="" loading="lazy" referrerpolicy="no-referrer">
+    </div>
+  </div>
+</section>
+
+<!-- ============ LAS SILLAS ============ -->
+<section id="sillas" aria-label="Los barberos de la casa">
+  <header>
+    <span class="kicker">ELIJA BARBERO, NO TURNO</span>
+    <h2>Las sillas</h2>
+  </header>
+  <div id="sillas-grid">
+    <article class="barbero">
+      <div class="ph"><img src="https://images.pexels.com/photos/2307047/pexels-photo-2307047.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Don Ramón, barbero de la silla uno" loading="lazy" referrerpolicy="no-referrer"></div>
+      <span class="num">Silla Nº 1</span>
+      <h3>Don Ramón</h3>
+      <p class="esp">NAVAJA LIBRE · DESDE 1987</p>
+    </article>
+    <article class="barbero">
+      <div class="ph"><img src="https://images.pexels.com/photos/7697489/pexels-photo-7697489.jpeg?auto=compress&cs=tinysrgb&w=900" alt="El Güero, barbero de la silla dos" loading="lazy" referrerpolicy="no-referrer"></div>
+      <span class="num">Silla Nº 2</span>
+      <h3>El Güero</h3>
+      <p class="esp">FADE CLÁSICO · DESDE 2009</p>
+    </article>
+    <article class="barbero">
+      <div class="ph"><img src="https://images.pexels.com/photos/1836983/pexels-photo-1836983.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Balam, barbero de la silla tres" loading="lazy" referrerpolicy="no-referrer"></div>
+      <span class="num">Silla Nº 3</span>
+      <h3>Balam</h3>
+      <p class="esp">BARBA Y PATILLA · DESDE 2016</p>
+    </article>
+  </div>
+</section>
+
+<!-- ============ EL POSTE (historia real) ============ -->
+<section id="poste-historia" aria-label="Por qué el poste">
+  <div id="poste-grid">
+    <div class="poste" id="poste-grande" aria-hidden="true"></div>
+    <div>
+      <span class="kicker">POR QUÉ EL POSTE</span>
+      <h2>Tres franjas, ocho siglos</h2>
+      <div class="significados">
+        <div class="significado rojo"><b>El rojo</b><p>La sangre. Los barberos fuimos también cirujanos: sangrías, muelas y suturas, desde el siglo XII.</p></div>
+        <div class="significado blanco"><b>El blanco</b><p>Las vendas. Se secaban enrolladas en un poste a la puerta, girando con el viento. De ahí la espiral.</p></div>
+        <div class="significado azul"><b>El azul</b><p>Las venas. Y la señal de que aquí, hoy, lo único que se corta es el pelo.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CIERRE ============ -->
+<section id="cierre" aria-label="Reservar silla">
+  <div id="certificado">
+    <span class="script">a la orden desde 1987</span>
+    <h2>Reserve su silla</h2>
+    <p class="datos">
+      MAR – SÁB · 10:00 – 20:00<br>
+      AV. DE LOS BARBEROS 87 · CENTRO · GUADALAJARA<br>
+      TEL. 33 1987 0087
+    </p>
+    <a class="btn" href="#reserva">RESERVAR SILLA</a>
+  </div>
+</section>
+
+<footer id="pie">
+  NAVAJA · BARBERÍA CLÁSICA — FOTOGRAFÍA Y VIDEO CORTESÍA DE PEXELS
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Observer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MorphSVGPlugin.min.js"></script>
+<script>
+(function(){
+  "use strict";
+  var REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var DESK = window.matchMedia("(min-width: 800px) and (min-height: 501px)").matches;
+  var FINE = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+  gsap.registerPlugin(ScrollTrigger, Observer, MorphSVGPlugin);
+  ScrollTrigger.config({ ignoreMobileResize: true });
+
+  /* ============ srcset Pexels ============ */
+  document.querySelectorAll('img[src*="images.pexels.com"]').forEach(function(img){
+    if (img.srcset) return;
+    img.srcset = [500, 900, 1600].map(function(w){
+      return img.src.replace(/([?&])w=\d+/, "$1w=" + w) + " " + w + "w";
+    }).join(", ");
+    img.sizes = img.closest(".barbero") ? "(max-width: 799px) 90vw, 30vw" : "100vw";
+  });
+
+  if (REDUCED) return; /* versión estática completa: slides apiladas por CSS, sin trail ni spin */
+
+  /* ============ Reveals lentos (arquetipo heritage) ============ */
+  gsap.utils.toArray("#carta, #sillas header, .barbero, #poste-grid, #certificado").forEach(function(el, i){
+    gsap.from(el, {
+      y: 44, opacity: 0, duration: 1.1, ease: "power2.out",
+      scrollTrigger: { trigger: el, start: "top 82%", once: true }
+    });
+  });
+  gsap.from("#hero-inner > *", {
+    y: 30, opacity: 0, duration: 1.1, stagger: .14, ease: "power2.out", delay: .2
+  });
+
+  /* ============ EL RITUAL: Observer slides (desktop fino) ============ */
+  if (DESK){
+    var slides = gsap.utils.toArray("#ritual .slide");
+    var formas = ["#forma-toalla", "#forma-navaja", "#forma-peine", "#forma-espejo"];
+    var dotsBox = document.getElementById("ritual-dots");
+    slides.forEach(function(_, i){
+      var b = document.createElement("button");
+      b.type = "button";
+      b.setAttribute("aria-label", "Paso " + (i + 1));
+      if (i === 0) b.classList.add("on");
+      b.addEventListener("click", function(){ if (!animating && i !== current) gotoSlide(i, i > current ? 1 : -1); });
+      dotsBox.appendChild(b);
+    });
+    var dots = dotsBox.querySelectorAll("button");
+
+    var current = 0, animating = false, activo = false, done = false;
+    var ritual = document.getElementById("ritual");
+    var vidNavaja = ritual.querySelector("video");
+
+    function gotoSlide(index, dir){
+      if (index < 0){ liberar(-1); return; }
+      if (index >= slides.length){ liberar(1); return; }
+      animating = true;
+      var saliente = slides[current], entrante = slides[index];
+      entrante.classList.add("activa");
+      gsap.set(entrante, { zIndex: 3 });
+      gsap.set(saliente, { zIndex: 2 });
+      var tl = gsap.timeline({
+        defaults: { duration: 1.05, ease: "power2.inOut" },
+        onComplete: function(){
+          saliente.classList.remove("activa");
+          gsap.set([saliente, entrante], { clearProps: "zIndex" });
+          animating = false;
+        }
+      });
+      tl.fromTo(entrante, { opacity: 0 }, { opacity: 1 }, 0)
+        .fromTo(entrante.querySelector(".fondo"), { scale: 1.07 }, { scale: 1 }, 0)
+        .fromTo(entrante.querySelectorAll(".slide-inner > *"),
+          { y: 34, opacity: 0 }, { y: 0, opacity: 1, stagger: .1, duration: .8 }, .25)
+        .to("#icono-path", { morphSVG: { shape: formas[index], type: "rotational" }, duration: .8, ease: "power2.inOut" }, .1);
+      dots.forEach(function(d, i){ d.classList.toggle("on", i === index); });
+      current = index;
+      if (vidNavaja){ index === 1 ? vidNavaja.play().catch(function(){}) : vidNavaja.pause(); }
+    }
+
+    var obs = Observer.create({
+      type: "wheel,touch,pointer",
+      wheelSpeed: -1,
+      tolerance: 10,
+      preventDefault: true,
+      onDown: function(){ if (!animating) gotoSlide(current - 1, -1); },
+      onUp: function(){ if (!animating) gotoSlide(current + 1, 1); },
+      paused: true
+    });
+
+    function activar(desdeAbajo){
+      if (activo) return;
+      activo = true;
+      window.scrollTo(0, ritual.offsetTop); /* encuadrar ANTES de congelar el scroll */
+      document.documentElement.style.overflow = "hidden";
+      if (desdeAbajo && current !== slides.length - 1) gotoSlide(slides.length - 1, 1);
+      obs.enable();
+    }
+    function liberar(dir){
+      obs.disable();
+      activo = false;
+      document.documentElement.style.overflow = "";
+      var destino = dir > 0 ? ritual.offsetTop + ritual.offsetHeight + 2 : ritual.offsetTop - window.innerHeight * .6;
+      window.scrollTo({ top: destino, behavior: "instant" in window ? "instant" : "auto" });
+    }
+
+    ScrollTrigger.create({
+      trigger: "#ritual", start: "top 55%", end: "bottom 45%",
+      onEnter: function(){ activar(false); },
+      onEnterBack: function(){ activar(true); }
+    });
+
+    window.addEventListener("keydown", function(e){
+      if (!activo || animating) return;
+      if (e.key === "ArrowDown" || e.key === "PageDown"){ e.preventDefault(); gotoSlide(current + 1, 1); }
+      if (e.key === "ArrowUp" || e.key === "PageUp"){ e.preventDefault(); gotoSlide(current - 1, -1); }
+    });
+  } else {
+    /* móvil: reveals suaves por paso apilado */
+    gsap.utils.toArray("#ritual .slide-inner").forEach(function(inner){
+      gsap.from(inner.children, {
+        y: 30, opacity: 0, duration: .9, stagger: .12, ease: "power2.out",
+        scrollTrigger: { trigger: inner, start: "top 78%", once: true }
+      });
+    });
+    var v = document.querySelector("#ritual video");
+    if (v){ v.play().catch(function(){}); }
+  }
+
+  /* ============ EL ARCHIVO: image trail (cola rAF) ============ */
+  if (FINE){
+    var archivo = document.getElementById("archivo");
+    var fotos = [
+      "https://images.pexels.com/photos/9992819/pexels-photo-9992819.jpeg?auto=compress&cs=tinysrgb&w=500",
+      "https://images.pexels.com/photos/2318055/pexels-photo-2318055.jpeg?auto=compress&cs=tinysrgb&w=500",
+      "https://images.pexels.com/photos/4449799/pexels-photo-4449799.jpeg?auto=compress&cs=tinysrgb&w=500",
+      "https://images.pexels.com/photos/4625615/pexels-photo-4625615.jpeg?auto=compress&cs=tinysrgb&w=500",
+      "https://images.pexels.com/photos/6007400/pexels-photo-6007400.jpeg?auto=compress&cs=tinysrgb&w=500",
+      "https://images.pexels.com/photos/7518728/pexels-photo-7518728.jpeg?auto=compress&cs=tinysrgb&w=500"
+    ];
+    fotos.forEach(function(src){ var im = new Image(); im.src = src; });
+    var idx = 0, lastX = -9999, lastY = -9999, vivos = 0;
+    archivo.addEventListener("pointermove", function(e){
+      var umbral = window.innerWidth / 9;
+      if (Math.hypot(e.clientX - lastX, e.clientY - lastY) < umbral) return;
+      lastX = e.clientX; lastY = e.clientY;
+      if (vivos >= 14) return;
+      var r = archivo.getBoundingClientRect();
+      var img = document.createElement("img");
+      img.className = "estela";
+      img.src = fotos[idx++ % fotos.length];
+      img.alt = "";
+      img.style.left = (e.clientX - r.left) + "px";
+      img.style.top = (e.clientY - r.top) + "px";
+      archivo.appendChild(img);
+      vivos++;
+      gsap.fromTo(img,
+        { xPercent: -50, yPercent: -50, scale: .5, opacity: 0, rotation: gsap.utils.random(-9, 9) },
+        { scale: 1, opacity: 1, duration: .35, ease: "power2.out" });
+      gsap.to(img, {
+        opacity: 0, y: 46, duration: .9, delay: .55, ease: "power2.in",
+        onComplete: function(){ img.remove(); vivos--; }
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>
