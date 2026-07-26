@@ -1,14 +1,12 @@
-# NAVAJA — Barbería clásica · EST. 1987 · Guadalajara
+# NAVAJA · Barbería clásica (EST. 1987, Guadalajara)
 
-**Ver en vivo → [https://b0b1a6ae23.github.io/navaja-barberia/](https://b0b1a6ae23.github.io/navaja-barberia/)**
+Ver en vivo: https://angeljgc-dev.github.io/navaja-barberia/
 
 ![GSAP](https://img.shields.io/badge/GSAP-Observer%20%2B%20MorphSVG-88CE02?logo=greensock&logoColor=black)
 ![Diseño](https://img.shields.io/badge/dise%C3%B1o-tonsorial%20parlor-8B4513)
 ![CSS](https://img.shields.io/badge/CSS3-barber%20pole%20infinito-1572B6?logo=css3)
 
-Landing de barbería clásica con dirección de arte **investigada para el giro**
-(paletas de barberías reales → espresso/navy/crema/oxblood/latón) y navegación
-por secciones tipo *takeover*.
+Landing de una barbería clásica. La dirección de arte la saqué de paletas de barberías reales (espresso, navy, crema, oxblood, latón) y la navegación va por secciones tipo takeover.
 
 | Hero | Sección |
 | --- | --- |
@@ -16,16 +14,11 @@ por secciones tipo *takeover*.
 
 ## Técnicas
 
-- **GSAP Observer** para el takeover de secciones completas (candado `animating`,
-  liberación del scroll nativo al rebasar los extremos; gotcha documentado:
-  `scrollTo` ANTES de `overflow: hidden` o el scroll se congela a mitad).
-- **MorphSVGPlugin** (`type: "rotational"`) morfando iconos de oficio: navaja →
-  tijera → brocha.
-- **Image trail** con rAF siguiendo el cursor en la galería.
-- **Barber pole CSS puro**: `background-position` animado exactamente un periodo
-  (79.2 px) para el loop perfecto.
-- Tipografía "Tonsorial Parlor": Rye + League Gothic + Pinyon Script + Special Elite.
-- La historia real del poste de barbero como sección narrativa.
+- GSAP Observer para el takeover de secciones completas: candado `animating` y liberación del scroll nativo al rebasar los extremos. El gotcha que me costó rato fue el orden: hay que llamar `scrollTo` ANTES de `overflow: hidden`, si no el scroll se congela a mitad.
+- MorphSVGPlugin (`type: "rotational"`) morfando los iconos de oficio: navaja, tijera, brocha.
+- El barber pole es CSS puro: animo `background-position` exactamente un periodo (79.2 px) para que el loop quede perfecto.
+
+Aparte hay un image trail con rAF que sigue el cursor en la galería, la tipografía "Tonsorial Parlor" (Rye + League Gothic + Pinyon Script + Special Elite) y una sección que cuenta la historia real del poste de barbero.
 
 ## Cómo correr
 
@@ -35,11 +28,11 @@ npx http-server . -p 8080
 
 ## Licencia
 
-Código bajo licencia [MIT](LICENSE). **NAVAJA** es una marca ficticia creada para demostrar trabajo de portafolio; cualquier parecido con un negocio real es coincidencia. Los recursos de terceros (fotografías, videos y modelos 3D) conservan la licencia original de sus autores — ver Créditos.
+Código bajo licencia [MIT](LICENSE). NAVAJA no es un negocio real, es una marca que inventé para el portafolio; cualquier parecido con una barbería de verdad es casualidad. Las fotos, videos y modelos 3D de terceros siguen con la licencia de sus autores (los pongo en Créditos).
 
 ## Créditos
 
 Fotografía: [Pexels](https://www.pexels.com).
 
 ---
-**Ángel Josué García Cantero** · Serie *páginas-película*.
+Ángel Josué García Canteros
